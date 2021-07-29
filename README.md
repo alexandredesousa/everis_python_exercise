@@ -17,7 +17,7 @@ with that head.
 
   - to compute that, I will need to use the `AUX`, `XPI`, and `WWW` tables (allegedly, because from formulas inspection,
 to compute the results in head `XPI` only tables `XPI` and `AUX`  are required, being that `AUX` also depends on table `XPI` - 
-see file [docs](data_own_calculations.xlsx) sheet `XPI_computation` where I computed those records, and checked if they are
+see file [data_own_calculations.xlsx](docs/data_own_calculations.xlsx) (sheet `XPI_computation`) where I computed those records, and checked if they are
 equal to source (they are), using only the tables `XPI` and `AUX`.
 
 - Considering the challenge clearly states all columns must be used, I'll assume the previous point is not correct
@@ -51,13 +51,17 @@ Considering the other heads in the table containing computed elements, specifica
 
 - ** The formula in that column was specifically chosen to present here.
 Even though the formula points to `D$10` it is my belief it is a mistake - as that leads to a circular formula for the
-year 1992 (cell D10).
+year 1992 (cell D10) - see [raw_data_circularity.png](docs/raw_data_circularity.png) file.
 The same is true for column `XPI+2.0%` (i.e. pointing to cell `E$10`, in this case).
    - I believe that should instead point to cell `D$5` and `E$5` respectively, that is, pointing to the respective
    percentage values.
    - What I point to be the correct case, is what happens in the `WWW` calculations - i.e. point to the percentage
    points rather than some value in the middle of the calculations that leads to a circular computation
    when that cell is reached.
+   - based on that [data_own_calculations.xlsx](docs/data_own_calculations.xlsx) (sheet `corrected formulas`) presents
+   what I consider to be the correct formulas - basically, apply the same type of formula as to the
+   `WWW+x%` columns to the `XPI+x%` columns, and thus avoiding circularity for year 1992.
+   - the values obtained are coherent to the raw data received (file [python_assessment_data.xlsx](docs/python_assessment_data.xlsx))
    
 Assuming all the points presented, four types of functions, which apply to the headers as presented,
 the four types of computations will be developed in order to reproduce the .xlsx file with python code.  
