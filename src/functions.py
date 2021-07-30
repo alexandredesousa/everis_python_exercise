@@ -60,7 +60,7 @@ def compute_solution(xpi_data, www_data, aux_val, fixed_rate, perc_one_rate, per
 
     solution_df = pd.DataFrame(computed_solution, columns=head)
 
-    print("almost there")
+    return solution_df
 
 
 
