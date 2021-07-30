@@ -16,6 +16,7 @@ WWW_data = WWW_data[1:]
 
 ## get AUX raw table
 AUX_data = workbook.iloc[3:6, 8:10]
+AUX_data.columns = ['Type', 'Value']
 
 # percentages data - considering the simplicity of the data, will manually create it
 # note: there is a percentage to apply for the 'fixed' column,
@@ -23,10 +24,10 @@ AUX_data = workbook.iloc[3:6, 8:10]
 # as such, for the dataframe to be created, will use the reference 'fixed', 'perc_one' and 'perc_two',
 # with the corresponding percentage column values.
 percentages_data = [['fixed', 0.030], ['perc_one', 0.010], ['perc_two', 0.020]]
-PERC_df = pd.DataFrame(percentages_data, columns=['ref', 'percentage'])
+PERC_df = pd.DataFrame(percentages_data, columns=['Ref', 'Percentage'])
 
 ## save raw data to be used in calculations
 XPI_data.to_csv('../data/XPI_data.csv', index=False)
 WWW_data.to_csv('../data/WWW_data.csv', index=False)
-AUX_data.to_csv('../data/AUX_data.csv', header=False, index=False)
-PERC_df.to_csv('../data/PERC_df.csv', index=False)
+AUX_data.to_csv('../data/AUX_data.csv', index=False)
+PERC_df.to_csv('../data/PERC_data.csv', index=False)
