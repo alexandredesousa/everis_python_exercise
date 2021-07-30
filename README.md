@@ -17,7 +17,7 @@ with that head.
 
   - to compute that, I will need to use the `AUX`, `XPI`, and `WWW` tables (allegedly, because from formulas inspection,
 to compute the results in head `XPI` only tables `XPI` and `AUX`  are required, being that `AUX` also depends on table `XPI` - 
-see file [data_own_calculations.xlsx](docs/data_own_calculations.xlsx) (sheet `XPI_computation`) where I computed those records, and checked if they are
+see file [data_own_calculations.xlsx](data/data_own_calculations.xlsx) (sheet `XPI_computation`) where I computed those records, and checked if they are
 equal to source (they are), using only the tables `XPI` and `AUX`.
 
 - Considering the challenge clearly states all columns must be used, I'll assume the previous point is not correct
@@ -58,10 +58,19 @@ The same is true for column `XPI+2.0%` (i.e. pointing to cell `E$10`, in this ca
    - What I point to be the correct case, is what happens in the `WWW` calculations - i.e. point to the percentage
    points rather than some value in the middle of the calculations that leads to a circular computation
    when that cell is reached.
-   - based on that [data_own_calculations.xlsx](docs/data_own_calculations.xlsx) (sheet `corrected formulas`) presents
+   - based on that [data_own_calculations.xlsx](data/data_own_calculations.xlsx) (sheet `corrected formulas`) presents
    what I consider to be the correct formulas - basically, apply the same type of formula as to the
    `WWW+x%` columns to the `XPI+x%` columns, and thus avoiding circularity for year 1992.
-   - the values obtained are coherent to the raw data received (file [python_assessment_data.xlsx](docs/python_assessment_data.xlsx))
+   - the values obtained are coherent to the raw data received (file [python_assessment_data.xlsx](data/python_assessment_data.xlsx))
    
 Assuming all the points presented, four types of functions, which apply to the headers as presented,
-the four types of computations will be developed in order to reproduce the .xlsx file with python code.  
+the four types of computations will be developed in order to reproduce the .xlsx file with python code.
+
+# Development Notes
+1. to satisfy the requirement "Your Python code __can’t__ use the spreadsheet as a source,
+but you can create any other external method as csv, txt, etc..", a module was developed ([get_raw_data.py](src/get_raw_data.py))
+to extract the raw data from the spreadsheet provided (available [here](data/python_assessment_data.xlsx)), and saves it
+as .csv in the [data directory](data).
+  1.  according to the document provided "note that to achieve the results you will need to use the
+  AUX, XPI, and WWW tables in order to apply all the necessary calculations (...)
+  and you must use all the percentual indexes.". The module extracts only these data and saves it as different csv files.
