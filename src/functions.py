@@ -15,3 +15,7 @@ def www_function(year_t, www_table):
     # for some reason key value = 'Value' fails in this case. use iloc
     current_www = www_table[www_table.Year == year_t].iloc[0, 1]#.item()
     return last_www/current_www
+
+def element_percent_increase_function(percentage, preceding_element_t, preceding_element_t1):
+    ""
+    return preceding_element_t + preceding_element_t1 * percentage
